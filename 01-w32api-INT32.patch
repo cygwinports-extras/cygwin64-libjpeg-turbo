@@ -1,0 +1,15 @@
+http://cygwin.com/ml/cygwin-apps/2013-04/msg00167.html
+
+--- origsrc/libjpeg-turbo-1.2.1/jmorecfg.h	2012-06-29 18:52:08.000000000 -0500
++++ src/libjpeg-turbo-1.2.1/jmorecfg.h	2013-04-11 16:48:05.701881700 -0500
+@@ -159,8 +159,10 @@ typedef short INT16;
+ /* INT32 must hold at least signed 32-bit values. */
+ 
+ #ifndef XMD_H			/* X11/xmd.h correctly defines INT32 */
++#ifndef _BASETSD_H_		/* w32api defines this in basetsd.h */
+ typedef long INT32;
+ #endif
++#endif
+ 
+ /* Datatype used for image dimensions.  The JPEG standard only supports
+  * images up to 64K*64K due to 16-bit fields in SOF markers.  Therefore

@@ -1,0 +1,20 @@
+CROSS_HOST="x86_64-pc-cygwin"
+inherit cross
+
+NAME="cygwin64-libjpeg-turbo"
+VERSION=1.2.1
+RELEASE=2
+CATEGORY="Devel"
+SUMMARY="JPEG library for Cygwin 64bit toolchain"
+DESCRIPTION="libjpeg-turbo is a derivative of libjpeg that uses SIMD
+instructions (MMX, SSE2, NEON) to accelerate baseline JPEG compression
+and decompression on x86, x86-64, and ARM systems.  On such systems,
+libjpeg-turbo is generally 2-4x as fast as the unmodified version of
+libjpeg, all else being equal."
+HOMEPAGE="http://libjpeg-turbo.virtualgl.org/"
+SRC_URI="mirror://sourceforge/libjpeg-turbo/libjpeg-turbo-${VERSION}.tar.gz"
+SRC_DIR="libjpeg-turbo-${VERSION}"
+PATCH_URI="01-w32api-INT32.patch"
+
+CYGCONF_ARGS="--with-jpeg8"
+MAKEOPTS+=" -j1 bin_PROGRAMS= dist_man1_MANS= dist_doc_DATA= dist_example_DATA= "
